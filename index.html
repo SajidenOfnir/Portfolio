@@ -156,6 +156,13 @@
             position: relative;
             overflow: hidden;
         }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            transform: translateY(0);
+        }
 
         .hero::before {
             content: '';
@@ -166,6 +173,7 @@
             bottom: 0;
             background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='grid' width='10' height='10' patternUnits='userSpaceOnUse'%3E%3Cpath d='M 10 0 L 0 0 0 10' fill='none' stroke='rgba(0,212,255,0.08)' stroke-width='0.5'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100' height='100' fill='url(%23grid)'/%3E%3C/svg%3E");
             opacity: 0.6;
+            z-index: 1;
         }
 
         .hero::after {
@@ -178,6 +186,7 @@
             background: conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0, 212, 255, 0.03) 60deg, transparent 120deg);
             animation: rotate 20s linear infinite;
             pointer-events: none;
+            z-index: 1;
         }
 
         @keyframes rotate {
@@ -814,6 +823,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero-bg"></div>
         <div class="hero-container">
             <div class="hero-content fade-in">
                 <h1>Hi I'm Sheikh Sajid Hossain</h1>
@@ -1382,11 +1392,11 @@
         // Parallax effect for hero section
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
+            const bg = document.querySelector('.hero-bg');
             const rate = scrolled * -0.5;
             
-            if (hero) {
-                hero.style.transform = `translateY(${rate}px)`;
+            if (bg) {
+                bg.style.transform = `translateY(${rate}px)`;
             }
         });
 
@@ -1445,6 +1455,7 @@
 </body>
 
 </html>
+
 
 
 
